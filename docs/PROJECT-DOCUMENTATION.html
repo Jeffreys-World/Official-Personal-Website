@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jeffrey De La Cruz — Portfolio Website: Build Documentation</title>
+<style>
+  @page { size: Letter; margin: 2cm 2.2cm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+    max-width: 100%;
+    margin: 0;
+  }
+  h1 { font-size: 22pt; margin: 0 0 2pt; letter-spacing: -0.5pt; }
+  .subtitle { font-size: 11pt; color: #555; margin: 0 0 4pt; }
+  .meta { font-family: Consolas, monospace; font-size: 8.5pt; color: #777; margin-bottom: 18pt; }
+  h2 {
+    font-size: 14pt; margin: 22pt 0 8pt; padding-bottom: 3pt;
+    border-bottom: 2px solid #1a1a1a; page-break-after: avoid;
+  }
+  h3 { font-size: 11.5pt; margin: 14pt 0 5pt; page-break-after: avoid; }
+  p { margin: 0 0 7pt; }
+  ul, ol { margin: 0 0 8pt; padding-left: 18pt; }
+  li { margin-bottom: 3pt; }
+  code, .mono {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9pt; background: #f2f2f0; padding: 0.5pt 3pt; border-radius: 2pt;
+  }
+  pre {
+    font-family: Consolas, "Courier New", monospace; font-size: 8.5pt;
+    background: #f2f2f0; padding: 8pt 10pt; border-radius: 3pt;
+    line-height: 1.45; overflow: hidden; page-break-inside: avoid;
+  }
+  table {
+    border-collapse: collapse; width: 100%; margin: 6pt 0 12pt;
+    font-size: 9.5pt; page-break-inside: avoid;
+  }
+  th { background: #1a1a1a; color: #fff; text-align: left; padding: 4pt 8pt; font-size: 9pt; }
+  td { border: 1px solid #ccc; padding: 4pt 8pt; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f7f5; }
+  .note {
+    background: #fdf6e3; border-left: 3pt solid #b58900;
+    padding: 6pt 10pt; margin: 8pt 0; font-size: 9.5pt;
+  }
+  .pagebreak { page-break-before: always; }
+  .small { font-size: 9pt; color: #555; }
+</style>
+</head>
+<body>
+
+<h1>Jeffrey De La Cruz — Personal Portfolio Website</h1>
+<p class="subtitle">Complete Build Documentation &amp; Session Record</p>
+<p class="meta">Generated 2026-07-19 · Repo: github.com/Jeffreys-World/Official-Personal-Website · Built with Claude Code</p>
+
+<h2>1. Project Overview</h2>
+<p>A single-page developer portfolio supporting Jeffrey's pivot into software engineering and AI product building. The design is structurally inspired by <strong>haoqi.design</strong> — typography-led hero, minimal utilitarian navigation, list-based project rows, and technical "HUD" metadata — rebuilt with original content, copy, and a New York City visual identity.</p>
+<p>The site was planned from two briefs (<em>Jeffrey_Portfolio_Site_Plan.pdf</em> and the resume PDF), built greenfield in <code>d:\GitHub\Official Personal Website\</code>, verified with Lighthouse, and pushed to GitHub. A prior draft (<code>Personal Website First Draft\</code>, plain HTML/CSS) was intentionally not reused.</p>
+
+<h2>2. Decisions Made (User-Confirmed)</h2>
+<table>
+<tr><th>Decision</th><th>Choice</th></tr>
+<tr><td>Site structure</td><td>Single page (no separate case-study pages)</td></tr>
+<tr><td>Navigation</td><td>Experience / Projects / Contact — smooth-scroll anchors</td></tr>
+<tr><td>Stickers</td><td>Custom NYC-themed SVGs built in-house (subway token, I♥NY mark, pigeon, water tower)</td></tr>
+<tr><td>Typography</td><td>Free open-source fonts (Space Grotesk + Space Mono), not the reference site's commercial font</td></tr>
+<tr><td>Cyclistic presentation link</td><td>In-repo PDF fallback (no Google Slides URL on file)</td></tr>
+<tr><td>Theme</td><td>Dark mode default with THEME[D/L] toggle; no sound toggle</td></tr>
+</table>
+
+<h2>3. Tech Stack</h2>
+<table>
+<tr><th>Layer</th><th>Technology</th><th>Notes</th></tr>
+<tr><td>Framework</td><td>Next.js 16.2.10 (App Router, TypeScript)</td><td>Fully static output — all routes prerendered</td></tr>
+<tr><td>Styling</td><td>Tailwind CSS v4</td><td>CSS-first config; <code>@custom-variant dark</code> class strategy</td></tr>
+<tr><td>Animation</td><td>Motion 12 (Framer Motion, <code>motion/react</code>)</td><td>Scroll reveals, stagger; respects <code>prefers-reduced-motion</code></td></tr>
+<tr><td>Theming</td><td>next-themes 0.4</td><td>Dark default, class attribute, no flash-of-wrong-theme</td></tr>
+<tr><td>Fonts</td><td>Space Grotesk + Space Mono via <code>next/font/google</code></td><td>Self-hosted at build; zero external font requests</td></tr>
+<tr><td>Runtime</td><td>Node v24.18.0 / npm 11.16.0</td><td>Windows 10, PowerShell</td></tr>
+<tr><td>Deploy target</td><td>Vercel (pending user import)</td><td>Auto-deploys on push to main once connected</td></tr>
+</table>
+
+<h2>4. File Structure</h2>
+<pre>Official Personal Website/
+├─ app/
+│  ├─ layout.tsx        Root layout: both fonts, ThemeProvider, metadata/OG,
+│  │                    theme-color, skip link, background layer
+│  ├─ page.tsx          Server component composing Nav + all sections
+│  ├─ globals.css       Tailwind v4 import, dark variant, theme tokens (both
+│  │                    modes), grain + drifting-blob background, scroll rules
+│  └─ icon.svg          Favicon — subway-token "JD" motif
+├─ components/
+│  ├─ Nav.tsx           Sticky mono uppercase nav + ThemeToggle
+│  ├─ ThemeToggle.tsx   THEME[D]/THEME[L] bracket toggle (useSyncExternalStore
+│  │                    hydration guard — passes react-hooks lint)
+│  ├─ Hud.tsx           Live NYC clock (EST, ticks every second) + coordinates
+│  ├─ Reveal.tsx        whileInView wrapper, reduced-motion aware
+│  ├─ ExternalLink.tsx  Anchor + ↗ icon + sr-only "(opens in new tab)"
+│  ├─ ThemeProvider.tsx Client wrapper for next-themes
+│  ├─ icons/index.tsx   Arrow, GitHub, LinkedIn, Mail, Sun, Moon (inline SVG)
+│  ├─ stickers/index.tsx SubwayToken, HeartMark, Pigeon, WaterTower (aria-hidden)
+│  └─ sections/         Hero, Statement, Experience, Projects, Contact
+├─ lib/
+│  ├─ content.ts        ★ SINGLE SOURCE OF TRUTH for all copy — hero, bio,
+│  │                    statement, experience[], projects[], contact, nav
+│  └─ motion.ts         Shared variants: fadeUp, fadeOnly, stagger, viewport
+└─ docs/                This documentation</pre>
+<p class="note"><strong>Maintenance rule:</strong> to change any text on the site (bio, dates, project descriptions, links), edit <code>lib/content.ts</code> only. Components render from this data — no component edits needed for copy changes.</p>
+
+<h2>5. Design System</h2>
+<h3>Colors (CSS custom properties in globals.css)</h3>
+<table>
+<tr><th>Token</th><th>Dark (default)</th><th>Light</th><th>Used for</th></tr>
+<tr><td><code>--background</code></td><td>#0a0a0a</td><td>#fafafa</td><td>Page background</td></tr>
+<tr><td><code>--foreground</code></td><td>#ededed</td><td>#171717</td><td>Primary text</td></tr>
+<tr><td><code>--muted</code></td><td>#a1a1aa</td><td>#52525b</td><td>Secondary text, labels</td></tr>
+<tr><td><code>--subtle</code></td><td>#27272a</td><td>#e4e4e7</td><td>Borders, dividers</td></tr>
+<tr><td><code>--accent</code></td><td>#fbbf24 (amber)</td><td>#b45309</td><td>Hovers, NOW badge, highlights</td></tr>
+</table>
+<h3>Typography</h3>
+<ul>
+<li><strong>Space Grotesk</strong> (variable) — display and body. Hero headline scales <code>clamp(3rem, 10.5vw, 8.5rem)</code>, leading 0.95, tracking −0.03em. Statement/Contact headings <code>clamp(2.5rem, 8vw, 6.5rem)</code>.</li>
+<li><strong>Space Mono</strong> — all labels, nav, dates, HUD, footer meta: 11px uppercase, wide tracking. This carries the reference site's technical character.</li>
+</ul>
+<h3>Signature elements (from the haoqi.design reference study)</h3>
+<ul>
+<li><strong>HUD metadata</strong> — live ticking clock <code>HH:MM:SS EST·NYC</code> + Manhattan coordinates <code>40.7128°N × 74.0060°W</code> in the hero; coordinates repeated in the footer copyright line. (Reference equivalent: "--:-- GMT+8 CN", "0001 X 0001 Y".)</li>
+<li><strong>Bracket controls</strong> — <code>THEME[D]</code>/<code>THEME[L]</code> toggle. (Reference: THEME[A], SOUND[|]; sound intentionally omitted per brief.)</li>
+<li><strong>Indexed project rows</strong> — mono <code>01</code>/<code>02</code> index, title up to 5xl, tag · year label, ↗ arrow, whole row is the link.</li>
+<li><strong>NYC stickers</strong> — four decorative SVGs (subway token, I♥NY-style mark, pigeon, water tower), slight rotation, reduced opacity, <code>aria-hidden</code>.</li>
+<li><strong>Background</strong> — static SVG film grain (feTurbulence data-URI) + two blurred radial-gradient blobs drifting on 40s/52s transform-only CSS keyframes. Zero per-frame JavaScript; disabled under reduced motion.</li>
+</ul>
+
+<h2 class="pagebreak">6. Content Record (as shipped)</h2>
+<h3>Hero</h3>
+<p><strong>Headline:</strong> "I build systems that remove friction."<br>
+<strong>Eyebrow:</strong> Software Engineering &amp; AI Automation<br>
+<strong>Bio:</strong> AI-driven automation across customer service, supply chain, accounting, HR, and marketing; previously YMCA of Greater New York and NYC Parks Department.</p>
+<h3>Statement</h3>
+<p>"Innovate With Purpose" + subtitle "AI Driven Solutions and Automations"</p>
+<h3>Experience (verified against resume 2026-07-19)</h3>
+<table>
+<tr><th>Period</th><th>Role · Organization</th></tr>
+<tr><td>Jul 2026 — Present <strong>(NOW)</strong></td><td>AI-Native Fellow · Pursuit</td></tr>
+<tr><td>Mar — Apr 2026</td><td>Business Analyst (Volunteer) · Living Stones Foundation</td></tr>
+<tr><td>Jan — Mar 2026</td><td>Customer Experience Fellow · KindWork</td></tr>
+<tr><td>2021 — 2025</td><td>Aquatics Supervisor &amp; Swimming Instructor · YMCA of Greater New York (promotion noted in detail line)</td></tr>
+<tr><td>2017 — 2022</td><td>Lifeguard · NYC Parks &amp; Recreation</td></tr>
+</table>
+<h3>Projects</h3>
+<ol>
+<li><strong>Cyclistic Bike-Share Analysis</strong> (2024, Data Analysis) → github.com/Jeffreys-World/cyclistic-bike-share-analysis</li>
+<li><strong>Bellabeat Wellness Data Analysis</strong> (2024, Data Analysis) → github.com/Jeffreys-World/bellabeat-wellness-analysis</li>
+</ol>
+<h3>Contact</h3>
+<p>jeffreydelacruzbarrera@gmail.com · LinkedIn (linkedin.com/in/jeffrey-de-la-cruz) · GitHub (github.com/Jeffreys-World) · mailto icon</p>
+
+<h2>7. Quality Assurance Results</h2>
+<table>
+<tr><th>Check</th><th>Result</th></tr>
+<tr><td>Lighthouse — mobile</td><td>Performance 96 · Accessibility 100 · Best Practices 100 · SEO 100 (FCP 0.8s, LCP 2.4s, CLS 0, TBT 140ms)</td></tr>
+<tr><td>Lighthouse — desktop</td><td>100 · 100 · 100 · 100</td></tr>
+<tr><td>ESLint</td><td>Clean (one react-hooks/set-state-in-effect error found and fixed via useSyncExternalStore pattern)</td></tr>
+<tr><td>TypeScript</td><td>Clean</td></tr>
+<tr><td>Production build</td><td>Fully static — /, /_not-found, /icon.svg all prerendered</td></tr>
+<tr><td>External links</td><td>Both GitHub repos 200; LinkedIn 405 on HEAD (bot-blocking — URL verified from user's own profile)</td></tr>
+<tr><td>Accessibility measures</td><td>Semantic landmarks, single h1, skip link, focus-visible outlines, reduced-motion at CSS + JS levels, sr-only link annotations, decorative SVGs aria-hidden, contrast verified both themes</td></tr>
+</table>
+<p class="small">Note: Lighthouse scores were measured before the visual restyle (commit 917ec02). The restyle changed styling only — no new assets, scripts, or images — so scores are expected to hold. Re-run against the production URL after Vercel deploy to confirm.</p>
+
+<h2>8. Git History (all three repositories)</h2>
+<h3>Official-Personal-Website (main portfolio)</h3>
+<pre>917ec02  restyle: align design with haoqi.design reference
+8d0e376  Merge GitHub-initialized history
+2732a78  docs: replace scaffold README with project overview
+f4b58a4  fix: correct experience entries against resume
+7297e11  feat: initial portfolio site — Next.js, Tailwind v4, Framer Motion
+3c63d2d  Initial commit (GitHub auto-generated)</pre>
+<h3>cyclistic-bike-share-analysis</h3>
+<pre>1bc43f0  docs: fix README formatting and file references
+         (restored headings/bullets/table, real PDF filenames, in-repo
+          presentation link, removed placeholder block)</pre>
+<h3>bellabeat-wellness-analysis</h3>
+<pre>6748c05  docs: fix Files table to reference actual repo filenames</pre>
+<p>All three repos pushed and in sync with origin/main as of generation time.</p>
+
+<h2>9. Session Chronology</h2>
+<ol>
+<li><strong>Planning</strong> — Explored existing repo state (found empty target repo, old draft, both capstone repos); confirmed 4 design decisions with user; produced and got approval on the build plan.</li>
+<li><strong>Scaffold</strong> — create-next-app in a temp dir (folder name with spaces fails npm naming), moved into place, renamed package, installed motion + next-themes.</li>
+<li><strong>Build</strong> — globals.css tokens → layout → content.ts → primitives → Nav → five sections → stickers → favicon.</li>
+<li><strong>QA</strong> — lint (1 fix), clean build, Lighthouse mobile + desktop, link checks.</li>
+<li><strong>READMEs</strong> — rebuilt broken Cyclistic README, fixed Bellabeat file table; committed and pushed both.</li>
+<li><strong>Resume verification</strong> — user provided resume PDF; all five experience entries corrected (every placeholder date was wrong).</li>
+<li><strong>GitHub</strong> — user created repo (with auto README); histories merged without force-push; project README written; pushed.</li>
+<li><strong>Redesign</strong> — user pointed to haoqi.design; fetched and analyzed the reference; restyled to its technical/editorial spirit (giant type, mono HUD, bracket controls); committed and pushed.</li>
+<li><strong>Documentation</strong> — this document.</li>
+</ol>
+
+<h2 class="pagebreak">10. Token Usage Summary (Estimated)</h2>
+<p class="note"><strong>Disclaimer:</strong> Claude Code does not expose exact per-session token counts to the model. The figures below are good-faith estimates reconstructed from the session's activity (documents read, tool calls made, code written, subagents run). Treat them as ballpark planning numbers, not billing data. Actual usage is visible in your Anthropic console / Claude Code <code>/cost</code> command.</p>
+<table>
+<tr><th>Phase</th><th>Main activity</th><th>Est. tokens</th></tr>
+<tr><td>Planning &amp; exploration</td><td>3 PDFs read (brief, resume, agents guide), Explore + Plan subagents, plan file, user Q&amp;A</td><td>~55–75k</td></tr>
+<tr><td>Scaffold &amp; build</td><td>create-next-app, npm installs, 20+ files written (~1,400 lines of code/config)</td><td>~50–65k</td></tr>
+<tr><td>QA</td><td>Lint fix, 3 builds, 2 Lighthouse runs, link checks</td><td>~15–25k</td></tr>
+<tr><td>README fixes + GitHub setup</td><td>2 README rewrites, commits, merge, pushes</td><td>~12–18k</td></tr>
+<tr><td>Reference redesign</td><td>haoqi.design fetch/analysis, 10 files restyled, verify, push</td><td>~25–35k</td></tr>
+<tr><td>Documentation (this file)</td><td>HTML authoring + PDF generation</td><td>~10–15k</td></tr>
+<tr><td><strong>Session total</strong></td><td></td><td><strong>~170–230k</strong></td></tr>
+</table>
+<p class="small">Largest cost drivers: the three input PDFs (each page of a PDF costs both image and text tokens) and the parallel subagent runs during planning. Cheapest per value: the build phase itself — writing code is output-token-light relative to reading context.</p>
+
+<h2>11. Outstanding Items</h2>
+<ul>
+<li><strong>Vercel deploy</strong> — user action: import Jeffreys-World/Official-Personal-Website at vercel.com/new, click Deploy (zero config). Every push to main auto-deploys afterward.</li>
+<li><strong>README "Live" link</strong> — replace the "(Vercel deploy pending)" placeholder with the production URL after deploy.</li>
+<li><strong>Post-deploy Lighthouse</strong> — re-run against the production URL to confirm 90+ holds.</li>
+<li><strong>Optional</strong> — custom domain (Vercel → Domains tab); Cyclistic Google Slides link if one exists (currently links the in-repo PDF); OG share image if richer link previews are wanted.</li>
+</ul>
+
+<h2>12. Quick Reference Commands</h2>
+<pre>cd "d:\GitHub\Official Personal Website"
+npm run dev      # develop at http://localhost:3000
+npm run build    # production build (catches type errors)
+npm run lint     # ESLint
+npm run start    # serve the production build locally
+git push         # after Vercel is connected, this deploys</pre>
+
+</body>
+</html>
