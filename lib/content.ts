@@ -40,11 +40,18 @@ export const experience: ExperienceEntry[] = [
       "250-hour training in tech-enabled, AI-assisted customer support; certified in Zendesk and Intercom.",
   },
   {
-    role: "Aquatics Supervisor & Swimming Instructor",
+    role: "Aquatics Supervisor",
     org: "YMCA of Greater New York",
-    period: "2021 — 2025",
+    period: "Sep 2023 — Aug 2025",
     detail:
-      "Promoted from instructor to supervisor; led lifeguard rescue-drill training, safety protocols, scheduling, and adaptive swim instruction.",
+      "Led monthly rescue drill training for lifeguards and instructors using scenario-based simulations; developed aquatic safety protocols; owned class calendar and scheduling; delivered adaptive instruction for participants with mobility impairments; managed inventory and expense tracking.",
+  },
+  {
+    role: "Swimming Instructor",
+    org: "YMCA of Greater New York",
+    period: "Oct 2021 — Sep 2023",
+    detail:
+      "Planned, taught, and evaluated swim lessons aligned with YMCA curriculum; supported swim staff during classes and events; monitored pool deck safety.",
   },
   {
     role: "Lifeguard",
@@ -52,6 +59,30 @@ export const experience: ExperienceEntry[] = [
     period: "2017 — 2022",
   },
 ];
+
+export type SkillItem = {
+  name: string;
+  meta?: string;
+};
+
+export const skills = {
+  principles: [
+    "Find the friction first — name the problem before picking the tool.",
+    "Scope in PRDs: small, testable, honest about tradeoffs.",
+    "Ship fast with AI-assisted tooling; read every line before it lands.",
+    "Build in public — code review and feedback as habit, not ceremony.",
+  ],
+  technical: [
+    { name: "Python", meta: "pandas, matplotlib" },
+    { name: "SQL" },
+    { name: "R" },
+    { name: "Tableau" },
+    { name: "Zendesk" },
+    { name: "Intercom" },
+    { name: "Google Workspace" },
+    { name: "Spanish", meta: "native" },
+  ] as SkillItem[],
+};
 
 export type Project = {
   title: string;

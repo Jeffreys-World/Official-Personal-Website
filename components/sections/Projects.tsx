@@ -14,7 +14,7 @@ export function Projects() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative mx-auto w-full max-w-6xl px-5 py-24 sm:px-8"
+      className="relative mx-auto w-full max-w-6xl px-5 pt-12 pb-24 sm:px-8"
     >
       <Pigeon className="absolute right-6 top-12 w-14 rotate-3 opacity-60 sm:w-16" />
       <h2
@@ -36,13 +36,13 @@ export function Projects() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group grid gap-3 py-10 sm:grid-cols-[4rem_1fr_auto] sm:gap-8 sm:py-14"
+              className="group grid gap-3 py-10 transition-transform duration-200 ease-out motion-safe:hover:scale-[1.03] sm:grid-cols-[4rem_1fr_auto] sm:gap-8 sm:py-14"
             >
               <span className="font-mono text-xs text-muted sm:pt-3">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="text-3xl font-bold tracking-tight transition-colors group-hover:text-accent sm:text-5xl">
+                <h3 className="text-3xl font-bold tracking-tight underline decoration-1 decoration-transparent underline-offset-[6px] transition-colors duration-200 group-hover:text-accent group-hover:decoration-accent sm:text-5xl">
                   {project.title}
                 </h3>
                 <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted">
@@ -56,7 +56,7 @@ export function Projects() {
               <ArrowUpRight
                 width={28}
                 height={28}
-                className="hidden self-start text-muted transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent sm:block sm:pt-3"
+                className="hidden self-start text-muted transition-all duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent sm:block sm:pt-3"
               />
             </a>
           </motion.li>

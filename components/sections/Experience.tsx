@@ -12,7 +12,7 @@ export function Experience() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8"
+      className="mx-auto w-full max-w-6xl px-5 pt-24 pb-12 sm:px-8"
     >
       <h2
         id="experience-heading"

@@ -10,7 +10,7 @@ export function Nav() {
       >
         <a
           href="#main"
-          className="font-mono text-[11px] font-bold uppercase tracking-widest transition-colors hover:text-accent"
+          className="inline-block font-mono text-[11px] font-bold uppercase tracking-widest transition duration-200 ease-out hover:text-accent motion-safe:hover:scale-[1.03]"
         >
           Jeffrey De La Cruz
         </a>
@@ -19,7 +19,7 @@ export function Nav() {
             <a
               key={item.href}
               href={item.href}
-              className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-foreground"
+              className="inline-block font-mono text-[11px] uppercase tracking-widest text-muted underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-foreground hover:decoration-accent motion-safe:hover:scale-[1.03]"
             >
               {item.label}
             </a>

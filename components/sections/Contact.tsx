@@ -33,7 +33,7 @@ export function Contact() {
         <div className="mt-20 flex flex-col gap-6 border-t border-subtle pt-8 sm:flex-row sm:items-center sm:justify-between">
           <a
             href={`mailto:${contact.email}`}
-            className="font-mono text-xs uppercase tracking-widest transition-colors hover:text-accent"
+            className="inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent motion-safe:hover:scale-[1.03]"
           >
             {contact.email}
           </a>
@@ -49,7 +49,7 @@ export function Contact() {
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
                     aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center border border-subtle text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-10 w-10 items-center justify-center border border-subtle text-muted transition duration-200 ease-out hover:border-accent hover:text-accent motion-safe:hover:scale-[1.03]"
                   >
                     <Icon />
                   </a>
