@@ -2,7 +2,6 @@
 
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "@/components/icons";
 
 const emptySubscribe = () => () => {};
 
@@ -34,9 +33,9 @@ export function ThemeToggle() {
       }
       disabled={!mounted}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-subtle text-muted transition-colors hover:border-accent hover:text-accent"
+      className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-foreground"
     >
-      {mounted ? isDark ? <Sun /> : <Moon /> : <span className="h-5 w-5" />}
+      THEME[{mounted ? (isDark ? "D" : "L") : "·"}]
     </button>
   );
 }

@@ -12,11 +12,11 @@ export function Experience() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="mx-auto w-full max-w-5xl px-5 py-24 sm:px-8"
+      className="mx-auto w-full max-w-6xl px-5 py-24 sm:px-8"
     >
       <h2
         id="experience-heading"
-        className="mb-12 text-sm font-bold uppercase tracking-[0.25em] text-muted"
+        className="mb-12 font-mono text-xs uppercase tracking-[0.3em] text-muted"
       >
         Experience
       </h2>
@@ -31,23 +31,23 @@ export function Experience() {
           <motion.li
             key={`${entry.org}-${entry.role}`}
             variants={item}
-            className="grid gap-1 py-6 sm:grid-cols-[10rem_1fr] sm:gap-6"
+            className="grid gap-1 py-7 sm:grid-cols-[12rem_1fr] sm:gap-8"
           >
-            <p className="text-sm text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted sm:pt-1.5">
               {entry.period}
               {entry.current && (
-                <span className="ml-2 inline-block rounded-full border border-accent px-2 py-0.5 text-xs font-medium text-accent">
-                  Now
+                <span className="ml-2 inline-block border border-accent px-1.5 py-0.5 text-[10px] font-bold text-accent">
+                  NOW
                 </span>
               )}
             </p>
             <div>
-              <h3 className="text-lg font-semibold">
+              <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
                 {entry.role}
                 <span className="text-muted"> · {entry.org}</span>
               </h3>
               {entry.detail && (
-                <p className="mt-1 text-sm leading-relaxed text-muted">
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
                   {entry.detail}
                 </p>
               )}
