@@ -20,33 +20,36 @@ export const experience: ExperienceEntry[] = [
   {
     role: "AI-Native Fellow",
     org: "Pursuit",
-    period: "2025 — Present",
+    period: "Jul 2026 — Present",
     detail:
-      "Building AI-powered products and automations end to end — from problem discovery to shipped software — in an intensive fellowship focused on AI-native engineering.",
+      "Building and shipping data-driven web and workflow MVPs with multi-model LLMs and AI-assisted development — product scoping, PRDs, and technical pitches — alongside 100+ AI-native developers.",
     current: true,
   },
   {
     role: "Business Analyst (Volunteer)",
     org: "Living Stones Foundation",
-    period: "2024",
-    detail: "Data analysis and process improvement for nonprofit operations.",
+    period: "Mar — Apr 2026",
+    detail:
+      "Independent analysis of a three-platform SaaS ecosystem for climate-smart agriculture across 12 Latin American countries; delivered a board-ready evaluation report.",
   },
   {
     role: "Customer Experience Fellow",
     org: "KindWork",
-    period: "2024",
-    detail: "Trained in modern CX tooling, workflows, and support operations.",
+    period: "Jan — Mar 2026",
+    detail:
+      "250-hour training in tech-enabled, AI-assisted customer support; certified in Zendesk and Intercom.",
   },
   {
-    role: "Aquatics Supervisor & Swim Instructor",
+    role: "Aquatics Supervisor & Swimming Instructor",
     org: "YMCA of Greater New York",
-    period: "2019 — 2023",
-    detail: "Led aquatics staff, programming, and safety operations.",
+    period: "2021 — 2025",
+    detail:
+      "Promoted from instructor to supervisor; led lifeguard rescue-drill training, safety protocols, scheduling, and adaptive swim instruction.",
   },
   {
     role: "Lifeguard",
     org: "NYC Parks & Recreation",
-    period: "2018",
+    period: "2017 — 2022",
   },
 ];
 
