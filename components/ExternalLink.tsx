@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "@/components/icons";
+import { hoverLift } from "@/lib/hover";
 
 type Props = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ export function ExternalLink({ children, className, ...rest }: Props) {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center gap-1 underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent motion-safe:hover:scale-[1.03] ${className ?? ""}`}
+      className={`group inline-flex items-center gap-1 underline decoration-1 decoration-transparent underline-offset-4 ${hoverLift} hover:text-accent hover:decoration-accent ${className ?? ""}`}
       {...rest}
     >
       {children}

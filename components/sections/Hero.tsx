@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { hero } from "@/lib/content";
 import { fadeUp, fadeOnly, stagger } from "@/lib/motion";
+import { hoverLift } from "@/lib/hover";
 import { Hud } from "@/components/Hud";
 import { SubwayToken } from "@/components/stickers";
 
@@ -29,7 +30,7 @@ export function Hero() {
         <motion.h1
           variants={item}
           id="hero-heading"
-          className="max-w-[15ch] text-[clamp(3rem,10.5vw,8.5rem)] font-bold leading-[0.95] tracking-[-0.03em]"
+          className={`max-w-[15ch] text-[clamp(3rem,10.5vw,8.5rem)] font-bold leading-[0.95] tracking-[-0.03em] ${hoverLift} hover:text-accent`}
         >
           {hero.headline}
         </motion.h1>

@@ -144,3 +144,98 @@ body {
 .skip-link:focus {
   top: 0;
 }
+
+/* ---------------------------------------------------------------------- */
+/* Cognito Forms seamless embed (contact modal) — restyle to site palette. */
+/* Cognito ships a protected stylesheet (.cog-cognito--protect-css), so    */
+/* overrides are scoped under .cognito-embed and use !important.           */
+/* The branded Cognito header (logo + "Contact Form" title) is hidden —    */
+/* the modal already has its own heading. Delete the .cog-header rule to   */
+/* bring it back.                                                          */
+/* ---------------------------------------------------------------------- */
+
+.cognito-embed .cog-header {
+  display: none !important;
+}
+
+.cognito-embed .cog-cognito {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif !important;
+  color: var(--foreground) !important;
+}
+
+.cognito-embed .cog-form,
+.cognito-embed .cog-form__container,
+.cognito-embed .cog-page,
+.cognito-embed .cog-body,
+.cognito-embed .cog-content {
+  background: transparent !important;
+  color: var(--foreground) !important;
+}
+
+.cognito-embed .cog-cognito label,
+.cognito-embed .cog-cognito .cog-label {
+  color: var(--foreground) !important;
+  font-family: var(--font-space-mono), monospace !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.cognito-embed .cog-cognito input:not([type="checkbox"]):not([type="radio"]),
+.cognito-embed .cog-cognito textarea,
+.cognito-embed .cog-cognito select {
+  background: transparent !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--subtle) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.cognito-embed .cog-cognito input:focus,
+.cognito-embed .cog-cognito textarea:focus,
+.cognito-embed .cog-cognito select:focus {
+  border-color: var(--accent) !important;
+  outline: none !important;
+}
+
+.cognito-embed .cog-cognito ::placeholder {
+  color: var(--muted) !important;
+  opacity: 0.7 !important;
+}
+
+.cognito-embed .cog-cognito .cog-button,
+.cognito-embed .cog-cognito button[type="submit"] {
+  background: var(--accent) !important;
+  color: var(--background) !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-space-mono), monospace !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.cognito-embed .cog-cognito .cog-button:hover,
+.cognito-embed .cog-cognito button[type="submit"]:hover {
+  filter: brightness(1.1);
+}
+
+/* Footer links (Report Abuse / Terms) + "Powered by Cognito Forms" badge:
+   keep the required attribution but blend it into the theme. */
+.cognito-embed .cog-abuse,
+.cognito-embed .cog-abuse a {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+}
+
+.cognito-embed .cog-abuse a:hover {
+  color: var(--accent) !important;
+}
+
+.cognito-embed .cog-branding,
+.cognito-embed .cog-branding a,
+.cognito-embed .cog-branding__powered {
+  background: transparent !important;
+  color: var(--muted) !important;
+}

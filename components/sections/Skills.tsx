@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { skills } from "@/lib/content";
 import { fadeUp, fadeOnly, stagger, viewport } from "@/lib/motion";
+import { hoverLift } from "@/lib/hover";
 
 export function Skills() {
   const reduced = useReducedMotion();
@@ -33,7 +34,10 @@ export function Skills() {
           </h3>
           <ul className="mt-6 space-y-4">
             {skills.principles.map((line) => (
-              <li key={line} className="max-w-md text-sm leading-relaxed">
+              <li
+                key={line}
+                className={`max-w-md text-sm leading-relaxed ${hoverLift} hover:text-accent`}
+              >
                 {line}
               </li>
             ))}
@@ -47,7 +51,7 @@ export function Skills() {
             {skills.technical.map((skill) => (
               <li
                 key={skill.name}
-                className="flex items-baseline justify-between gap-4 py-2.5 text-sm"
+                className={`flex items-baseline justify-between gap-4 py-2.5 text-sm ${hoverLift} hover:text-accent`}
               >
                 <span className="font-medium">{skill.name}</span>
                 {skill.meta && (

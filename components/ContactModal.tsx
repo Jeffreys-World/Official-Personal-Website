@@ -7,6 +7,7 @@ import type { Variants } from "motion/react";
 import { contact } from "@/lib/content";
 import { subscribeContactModalOpen } from "@/lib/contact-modal";
 import { Close } from "@/components/icons";
+import { hoverLift } from "@/lib/hover";
 
 const COGNITO_SRC = "https://www.cognitoforms.com/f/seamless.js";
 const COGNITO_KEY = "eRS9IqBGSkivusQhZtgBbg";
@@ -181,7 +182,7 @@ export function ContactModal() {
             type="button"
             onClick={close}
             aria-label="Close contact form"
-            className="flex h-10 w-10 shrink-0 items-center justify-center border border-subtle text-muted transition duration-200 ease-out hover:border-accent hover:text-accent motion-safe:hover:scale-[1.03]"
+            className={`flex h-10 w-10 shrink-0 items-center justify-center border border-subtle text-muted ${hoverLift} hover:border-accent hover:text-accent`}
           >
             <Close />
           </button>
@@ -198,13 +199,13 @@ export function ContactModal() {
               {contact.modal.error}{" "}
               <a
                 href={`mailto:${contact.email}`}
-                className="font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent"
+                className={`inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 ${hoverLift} hover:text-accent hover:decoration-accent`}
               >
                 {contact.email}
               </a>
             </p>
           )}
-          <div ref={formContainerRef} />
+          <div ref={formContainerRef} className="cognito-embed" />
         </div>
       </motion.div>
     </motion.div>,

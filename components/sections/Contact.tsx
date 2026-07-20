@@ -1,6 +1,7 @@
 import { contact } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 import { ContactModalTrigger } from "@/components/ContactModalTrigger";
+import { hoverLift } from "@/lib/hover";
 import { GitHub, LinkedIn, Mail } from "@/components/icons";
 import { WaterTower } from "@/components/stickers";
 
@@ -23,7 +24,7 @@ export function Contact() {
           </p>
           <h2
             id="contact-heading"
-            className="max-w-[12ch] text-[clamp(2.5rem,8vw,6.5rem)] font-bold leading-[0.98] tracking-[-0.02em]"
+            className="max-w-[18ch] text-[clamp(2.5rem,8vw,6.5rem)] font-bold leading-[0.98] tracking-[-0.02em]"
           >
             {contact.heading}
           </h2>
@@ -33,12 +34,14 @@ export function Contact() {
         </Reveal>
         <div className="mt-20 flex flex-col gap-6 border-t border-subtle pt-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
-            <ContactModalTrigger className="inline-flex items-center justify-center border border-subtle px-5 py-3 font-mono text-xs uppercase tracking-widest transition duration-200 ease-out hover:border-accent hover:text-accent motion-safe:hover:scale-[1.03]">
+            <ContactModalTrigger
+              className={`inline-flex items-center justify-center border border-subtle px-5 py-3 font-mono text-xs uppercase tracking-widest ${hoverLift} hover:border-accent hover:text-accent`}
+            >
               {contact.cta}
             </ContactModalTrigger>
             <a
               href={`mailto:${contact.email}`}
-              className="inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent motion-safe:hover:scale-[1.03]"
+              className={`inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 ${hoverLift} hover:text-accent hover:decoration-accent`}
             >
               {contact.email}
             </a>
@@ -55,7 +58,7 @@ export function Contact() {
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
                     aria-label={link.label}
-                    className="flex h-10 w-10 items-center justify-center border border-subtle text-muted transition duration-200 ease-out hover:border-accent hover:text-accent motion-safe:hover:scale-[1.03]"
+                    className={`flex h-10 w-10 items-center justify-center border border-subtle text-muted ${hoverLift} hover:border-accent hover:text-accent`}
                   >
                     <Icon />
                   </a>

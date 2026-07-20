@@ -1,9 +1,9 @@
 import { nav } from "@/lib/content";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ContactModalTrigger } from "@/components/ContactModalTrigger";
+import { hoverLift } from "@/lib/hover";
 
-const linkClass =
-  "inline-block font-mono text-[11px] uppercase tracking-widest text-muted underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-foreground hover:decoration-accent motion-safe:hover:scale-[1.03]";
+const linkClass = `inline-block font-mono text-[11px] uppercase tracking-widest text-muted underline decoration-1 decoration-transparent underline-offset-4 ${hoverLift} hover:text-accent hover:decoration-accent`;
 
 export function Nav() {
   return (
@@ -14,7 +14,7 @@ export function Nav() {
       >
         <a
           href="#main"
-          className="inline-block font-mono text-[11px] font-bold uppercase tracking-widest transition duration-200 ease-out hover:text-accent motion-safe:hover:scale-[1.03]"
+          className={`inline-block font-mono text-[11px] font-bold uppercase tracking-widest ${hoverLift} hover:text-accent`}
         >
           Jeffrey De La Cruz
         </a>

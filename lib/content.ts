@@ -113,7 +113,7 @@ export const projects: Project[] = [
 
 export const contact = {
   email: "jeffreydelacruzbarrera@gmail.com",
-  heading: "Let's build something.",
+  heading: "Let's Connect and Work Together",
   blurb:
     "Open to software engineering and AI automation opportunities — or just a good conversation about removing friction.",
   cta: "Send a message",

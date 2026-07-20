@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { experience } from "@/lib/content";
 import { fadeUp, fadeOnly, stagger, viewport } from "@/lib/motion";
+import { hoverLift } from "@/lib/hover";
 
 export function Experience() {
   const reduced = useReducedMotion();
@@ -31,7 +32,7 @@ export function Experience() {
           <motion.li
             key={`${entry.org}-${entry.role}`}
             variants={item}
-            className="grid gap-1 py-7 sm:grid-cols-[12rem_1fr] sm:gap-8"
+            className={`grid gap-1 py-7 sm:grid-cols-[12rem_1fr] sm:gap-8 ${hoverLift} hover:text-accent`}
           >
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted sm:pt-1.5">
               {entry.period}

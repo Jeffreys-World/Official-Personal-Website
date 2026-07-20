@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
+import { hoverLift } from "@/lib/hover";
 
 const emptySubscribe = () => () => {};
 
@@ -33,7 +34,7 @@ export function ThemeToggle() {
       }
       disabled={!mounted}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-foreground"
+      className={`inline-block font-mono text-[11px] uppercase tracking-widest text-muted ${hoverLift} hover:text-accent`}
     >
       THEME[{mounted ? (isDark ? "D" : "L") : "·"}]
     </button>
