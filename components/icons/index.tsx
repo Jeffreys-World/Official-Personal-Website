@@ -62,3 +62,11 @@ export function Mail(props: IconProps) {
     </svg>
   );
 }
+
+export function Close(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  );
+}

@@ -116,6 +116,13 @@ export const contact = {
   heading: "Let's build something.",
   blurb:
     "Open to software engineering and AI automation opportunities — or just a good conversation about removing friction.",
+  cta: "Send a message",
+  modal: {
+    eyebrow: "Contact",
+    title: "Send a message.",
+    loading: "Loading form…",
+    error: "The form couldn't load. Email me instead at",
+  },
   links: [
     {
       label: "LinkedIn",

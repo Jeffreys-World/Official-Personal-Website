@@ -1,5 +1,6 @@
 import { contact } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { ContactModalTrigger } from "@/components/ContactModalTrigger";
 import { GitHub, LinkedIn, Mail } from "@/components/icons";
 import { WaterTower } from "@/components/stickers";
 
@@ -31,12 +32,17 @@ export function Contact() {
           </p>
         </Reveal>
         <div className="mt-20 flex flex-col gap-6 border-t border-subtle pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <a
-            href={`mailto:${contact.email}`}
-            className="inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent motion-safe:hover:scale-[1.03]"
-          >
-            {contact.email}
-          </a>
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
+            <ContactModalTrigger className="inline-flex items-center justify-center border border-subtle px-5 py-3 font-mono text-xs uppercase tracking-widest transition duration-200 ease-out hover:border-accent hover:text-accent motion-safe:hover:scale-[1.03]">
+              {contact.cta}
+            </ContactModalTrigger>
+            <a
+              href={`mailto:${contact.email}`}
+              className="inline-block font-mono text-xs uppercase tracking-widest underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-accent hover:decoration-accent motion-safe:hover:scale-[1.03]"
+            >
+              {contact.email}
+            </a>
+          </div>
           <ul className="flex items-center gap-5">
             {contact.links.map((link) => {
               const Icon = iconMap[link.icon];

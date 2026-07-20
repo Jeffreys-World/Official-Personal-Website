@@ -1,5 +1,9 @@
 import { nav } from "@/lib/content";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { ContactModalTrigger } from "@/components/ContactModalTrigger";
+
+const linkClass =
+  "inline-block font-mono text-[11px] uppercase tracking-widest text-muted underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-foreground hover:decoration-accent motion-safe:hover:scale-[1.03]";
 
 export function Nav() {
   return (
@@ -15,15 +19,21 @@ export function Nav() {
           Jeffrey De La Cruz
         </a>
         <div className="flex items-center gap-5 sm:gap-8">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="inline-block font-mono text-[11px] uppercase tracking-widest text-muted underline decoration-1 decoration-transparent underline-offset-4 transition duration-200 ease-out hover:text-foreground hover:decoration-accent motion-safe:hover:scale-[1.03]"
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.href === "#contact" ? (
+              <ContactModalTrigger
+                key={item.href}
+                href={item.href}
+                className={linkClass}
+              >
+                {item.label}
+              </ContactModalTrigger>
+            ) : (
+              <a key={item.href} href={item.href} className={linkClass}>
+                {item.label}
+              </a>
+            )
+          )}
           <ThemeToggle />
         </div>
       </nav>
